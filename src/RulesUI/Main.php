@@ -23,7 +23,7 @@ class Main extends PluginBase implements Listener {
 	
     public function onCommand(CommandSender $sender, Command $cmd, string $label,array $args) : bool {
 		switch($cmd->getName()){
-			case "info":
+			case "core":
 				if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 					$form = $api->createSimpleForm(function (Player $sender, array $data){
@@ -33,12 +33,17 @@ class Main extends PluginBase implements Listener {
 						return true;
 					}
 						switch($result){
+							case 1:
+								$this->infomenu($sender);
+							case 2:
+								$this->owner($sender)
 						   
 						}
 					});
-					$form->setTitle(TF::GREEN . "-=-SkyRealmPE Info -=-");
-					$form->setContent("To Learn about any of this server:s features look below \n");
-					$form->adddropdown(TextFormat::BOLD . "Please respect staff and dont hack");	
+					$form->setTitle(TF::GREEN . "-=-SkyRealmPE Main Menu -=-");
+					$form->setContent("To Learn about any of this servers features look below \n");
+					$form->addButton("Info", 1);
+					$form->addButton("owner", 2);
 					$form->sendToPlayer($sender);
 				}
 				else{
@@ -49,4 +54,14 @@ class Main extends PluginBase implements Listener {
 		}
 		return true;
     }
+  public function infomenu($sender){
+	  $form->setTitle("SkyRealmPE Info");
+	  $form->setContent("Hey there! This is the info for this server"):
+  } 
+  public function owner($sender){
+      $form->setTitle("Owner of this server");
+      $form->setContent("Crafter@0162017 this the owner here");
+  
+  }
+	
 }
