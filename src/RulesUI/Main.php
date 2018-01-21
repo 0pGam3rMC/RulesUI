@@ -38,7 +38,7 @@ class Main extends PluginBase implements Listener {
 							case 2:
 								$this->owner($sender)
 						   
-						}
+						
 					});
 					$form->setTitle(TF::GREEN . "-=-SkyRealmPE Main Menu -=-");
 					$form->setContent("To Learn about any of this servers features look below \n");
