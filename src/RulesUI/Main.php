@@ -5,7 +5,7 @@ namespace RulesUI;
 use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
-use pocketmine\utils\TextFormat;
+use pocketmine\utils\TextFormat as TF;
 use pocketmine\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -23,7 +23,7 @@ class Main extends PluginBase implements Listener {
 	
     public function onCommand(CommandSender $sender, Command $cmd, string $label,array $args) : bool {
 		switch($cmd->getName()){
-			case "rulesui":
+			case "info":
 				if($sender instanceof Player) {
 					$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 					$form = $api->createSimpleForm(function (Player $sender, array $data){
@@ -36,8 +36,8 @@ class Main extends PluginBase implements Listener {
 						   
 						}
 					});
-					$form->setTitle("RebirthPE RulesUI Screen");
-					$form->setContent("Please follow the rules.");
+					$form->setTitle(TF::GREEN . "-=-SkyRealmPE Info -=-");
+					$form->setContent("To Learn about any of this server:s features look below \n");
 					$form->adddropdown(TextFormat::BOLD . "Please respect staff and dont hack");	
 					$form->sendToPlayer($sender);
 				}
